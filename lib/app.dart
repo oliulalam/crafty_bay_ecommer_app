@@ -17,14 +17,35 @@ class CraftyBayApp extends StatelessWidget {
         progressIndicatorTheme: ProgressIndicatorThemeData(
           color: AppColors.themeColor,
         ),
+
+        //====================================================================
         textTheme: TextTheme(
           headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.w600),
         ),
+
+        //====================================================================
         inputDecorationTheme: InputDecorationTheme(
           border: _outlineInputBorder(),
           focusedBorder: _outlineInputBorder(),
           errorBorder: _outlineInputBorder(Colors.red),
+          contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         ),
+
+        //====================================================================
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ElevatedButton.styleFrom(
+            backgroundColor: AppColors.themeColor,
+            foregroundColor: Colors.white,
+            padding: EdgeInsets.symmetric(vertical: 12),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8),
+            ),
+            textStyle: TextStyle(fontSize: 16),
+            fixedSize: Size.fromWidth(double.maxFinite),
+          ),
+        ),
+
+        //====================================================================
       ),
     );
   }
