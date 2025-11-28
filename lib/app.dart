@@ -46,6 +46,15 @@ class CraftyBayApp extends StatelessWidget {
         ),
 
         //====================================================================
+
+        textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+            foregroundColor: AppColors.themeColor,
+            textStyle: TextStyle(fontSize: 16)
+          ),
+        )
+
+        //====================================================================
       ),
     );
   }

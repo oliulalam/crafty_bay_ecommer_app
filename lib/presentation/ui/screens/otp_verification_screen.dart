@@ -7,8 +7,7 @@ class OtpVerificationScreen extends StatefulWidget {
   const OtpVerificationScreen({super.key});
 
   @override
-  State<OtpVerificationScreen> createState() =>
-      _OtpVerificationScreenState();
+  State<OtpVerificationScreen> createState() => _OtpVerificationScreenState();
 }
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
@@ -51,7 +50,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   selectedFillColor: Colors.white,
                   selectedColor: Colors.green,
                   inactiveFillColor: Colors.white,
-                  inactiveColor: AppColors.themeColor
+                  inactiveColor: AppColors.themeColor,
                 ),
                 animationDuration: Duration(milliseconds: 300),
                 backgroundColor: Colors.transparent,
@@ -59,11 +58,33 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 controller: _otpTEController,
                 onCompleted: (v) {
                   print("Completed");
-                }, appContext: context,
-
+                },
+                appContext: context,
               ),
               SizedBox(height: 16),
               ElevatedButton(onPressed: () {}, child: Text("Next")),
+              SizedBox(height: 16),
+              RichText(
+                text: TextSpan(
+                  style: Theme.of(context).textTheme.bodyLarge,
+                  text: 'This code will expire in ',
+                  children: [
+                    TextSpan(
+                      text: '120s',
+                      style: TextStyle(color: AppColors.themeColor),
+                    ),
+                  ],
+                ),
+              ),
+
+              SizedBox(height: 16),
+              
+              TextButton(
+                  onPressed: (){},
+                  child: Text("Resend Code")
+              ),
+
+              //==============================================================
             ],
           ),
         ),
