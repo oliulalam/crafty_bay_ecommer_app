@@ -17,9 +17,12 @@ class _HomeBannerSliderState extends State<HomeBannerSlider> {
     return Column(
       children: [
         CarouselSlider(
-          options: CarouselOptions(height: 180.0, onPageChanged: (index, reason){
-            _selectIndex.value = index;
-          }),
+          options: CarouselOptions(
+            height: 180.0,
+            onPageChanged: (index, reason) {
+              _selectIndex.value = index;
+            },
+          ),
           items: [1, 2, 3, 4, 5].map((i) {
             return Builder(
               builder: (BuildContext context) {
@@ -35,7 +38,7 @@ class _HomeBannerSliderState extends State<HomeBannerSlider> {
           }).toList(),
         ),
 
-        SizedBox(height: 8,),
+        SizedBox(height: 8),
 
         ValueListenableBuilder(
           valueListenable: _selectIndex,
@@ -55,7 +58,7 @@ class _HomeBannerSliderState extends State<HomeBannerSlider> {
                   ),
               ],
             );
-          }
+          },
         ),
       ],
     );
