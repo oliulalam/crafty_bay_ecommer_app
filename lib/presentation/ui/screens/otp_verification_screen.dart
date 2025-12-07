@@ -1,7 +1,9 @@
+import 'package:crafty_bay/presentation/ui/screens/complete_profile_screen.dart';
 import 'package:crafty_bay/presentation/ui/utils/app_colors.dart';
 import 'package:crafty_bay/presentation/ui/widgets/app_logo_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:get/get.dart';
 
 class OtpVerificationScreen extends StatefulWidget {
   const OtpVerificationScreen({super.key});
@@ -62,7 +64,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                 appContext: context,
               ),
               SizedBox(height: 16),
-              ElevatedButton(onPressed: () {}, child: Text("Next")),
+              ElevatedButton(onPressed: () {
+                _onTapCompleteButton();
+              }, child: Text("Next")),
               SizedBox(height: 16),
               RichText(
                 text: TextSpan(
@@ -93,6 +97,9 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   }
   //===============================================
 
+  void _onTapCompleteButton(){
+    Get.to(()=> CompleteProfileScreen());
+  }
   @override
   void dispose() {
     _otpTEController.dispose();
