@@ -28,6 +28,9 @@ class CraftyBayApp extends StatelessWidget {
           border: _outlineInputBorder(),
           focusedBorder: _outlineInputBorder(),
           errorBorder: _outlineInputBorder(Colors.red),
+          hintStyle: TextStyle(
+            fontWeight: FontWeight.w400
+          ),
           contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
         ),
 
