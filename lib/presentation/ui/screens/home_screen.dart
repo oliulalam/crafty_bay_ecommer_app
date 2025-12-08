@@ -34,6 +34,9 @@ class _HomeScreenState extends State<HomeScreen> {
             SizedBox(height: 16),
 
             _buildCategoriesSection(),
+
+            SectionHeader(title: "Popular", onTap: () {}),
+            SizedBox(height: 140, child: _buildProductListView()),
           ],
         ),
       ),
@@ -42,45 +45,75 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Widget _buildCategoriesSection() {
     return Column(
-            children: [
-              SectionHeader(title: "Categories", onTap: () {}),
+      children: [
+        SectionHeader(title: "Categories", onTap: () {}),
 
-              SizedBox(height: 8.0),
+        SizedBox(height: 8.0),
 
-              SizedBox(
-                height: 140,
-                child: _buildCategoryListView(),
-              ),
-            ],
-          );
+        SizedBox(height: 120, child: _buildCategoryListView()),
+      ],
+    );
   }
 
   Widget _buildCategoryListView() {
     return ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemCount: 10,
-                itemBuilder: (context, index) {
-                  return Column(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: AppColors.themeColor.withOpacity(0.1),
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                        child: Icon(
-                          Icons.computer,
-                          size: 40,
-                          color: AppColors.themeColor,
-                        ),
-                      ),
-                      SizedBox(height: 4,),
-                      Text("Electronics", style: TextStyle(color: AppColors.themeColor),)
-                    ],
-                  );
-                },
-                separatorBuilder: (_, __) => const SizedBox(width: 8),
-              );
+      scrollDirection: Axis.horizontal,
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return Column(
+          children: [
+            Container(
+              padding: EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                color: AppColors.themeColor.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(
+                Icons.computer,
+                size: 40,
+                color: AppColors.themeColor,
+              ),
+            ),
+            SizedBox(height: 4),
+            Text("Electronics", style: TextStyle(color: AppColors.themeColor)),
+          ],
+        );
+      },
+      separatorBuilder: (_, __) => const SizedBox(width: 8),
+    );
+  }
+
+  Widget _buildProductListView() {
+    return ListView.separated(
+      scrollDirection: Axis.horizontal,
+      itemCount: 10,
+      itemBuilder: (context, index) {
+        return Container(
+          width: 120,
+          child: Column(
+            children: [
+              Container(
+                width: 120,
+                height: 100,
+                padding: EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: AppColors.themeColor.withOpacity(0.1),
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(8.0),
+                      topRight: Radius.circular(8.0),
+                  ),
+                  image: DecorationImage(
+                    image: AssetImage(AssetsPath.dummyProductImage),
+                    fit: BoxFit.scaleDown,
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      },
+      separatorBuilder: (_, __) => const SizedBox(width: 8),
+    );
   }
 
   AppBar _buildAppBar() {
