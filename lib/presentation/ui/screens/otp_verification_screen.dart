@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:crafty_bay/presentation/ui/screens/complete_profile_screen.dart';
 import 'package:crafty_bay/presentation/ui/utils/app_colors.dart';
 import 'package:crafty_bay/presentation/ui/widgets/app_logo_widget.dart';
@@ -14,6 +16,28 @@ class OtpVerificationScreen extends StatefulWidget {
 
 class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   final TextEditingController _otpTEController = TextEditingController();
+
+  int timeLeft = 120; // countdown time
+  Timer? timer;
+
+  @override
+  void initState() {
+    super.initState();
+    startTimer();
+  }
+
+  void startTimer() {
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) {
+      if (timeLeft > 0) {
+        setState(() {
+          timeLeft--;
+        });
+      } else {
+        timer.cancel();
+      }
+    });
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +98,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                   text: 'This code will expire in ',
                   children: [
                     TextSpan(
-                      text: '120s',
+                      text: "$timeLeft",
                       style: TextStyle(color: AppColors.themeColor),
                     ),
                   ],
@@ -103,6 +127,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
   @override
   void dispose() {
     _otpTEController.dispose();
+    timer?.cancel();
     super.dispose();
   }
 }
