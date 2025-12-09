@@ -6,3 +6,4 @@ export 'home/section_header.dart';
 export 'app_logo_widget.dart';
 export 'home_banner_slider.dart';
 export 'product_card.dart';
+export 'category_card.dart';
